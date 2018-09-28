@@ -1,6 +1,7 @@
 data/
+out/
 test/
-examples/
+pure-examples/
 
 # Created by https://www.gitignore.io/api/node,windows
 

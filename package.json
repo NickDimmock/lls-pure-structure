@@ -1,0 +1,19 @@
+{
+  "name": "uon-staff-and-structure-import",
+  "version": "1.0.0",
+  "description": "Scripts to import UoN staff / structure data into Pure",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "nick.dimmock@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^3.1.0",
+    "local-config": "file:lib/local-config",
+    "moment": "^2.22.2",
+    "set-uon-date": "file:lib/set-uon-date",
+    "xml-js": "^1.6.7"
+  }
+}
