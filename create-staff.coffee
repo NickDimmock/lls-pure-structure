@@ -7,7 +7,10 @@ fs = require 'fs'
 staffData = require("#{config.dataJSON}").staff
 jsonOutFile = "#{config.outputDir}/persons.json"
 xmlOutFile = "#{config.outputDir}/persons.xml"
+lookupOutFile = "#{config.outputDir}/email-lookup.json"
 setUONDate = require 'set-uon-date'
+
+lookupData = {}
 
 personData =
         persons:
@@ -55,7 +58,7 @@ for key, val of staffData
                 emails:
                     'v3:classifiedEmail':
                         _attributes:
-                            id: val.email
+                            id: "#{key}-#{val.deptCode}-#{val.email}"
                         'v3:classification': 'email'
                         'v3:value': val.email
                 primaryAssociation: 'true'
@@ -78,11 +81,17 @@ for key, val of staffData
                 _attributes:
                     id: key
                     type: 'employee'
-                _text: key
+                _text: "employee-#{key}"
+
     personData.persons.person.push person
+
+    lookupData[val.email] = key
 
 jsonOut = JSON.stringify(personData, null, 4)
 xmlOut = convert.json2xml personData, { compact: true, spaces: 4 }
 
+lookupOut = JSON.stringify(lookupData, null, 4)
+
 fs.writeFileSync jsonOutFile, jsonOut
 fs.writeFileSync xmlOutFile, xmlOut
+fs.writeFileSync lookupOutFile, lookupOut
