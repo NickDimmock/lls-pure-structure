@@ -8,4 +8,3 @@ module.exports = (date) ->
         return config.uonStartDate
     else
         return date
-        

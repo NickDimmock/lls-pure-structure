@@ -31,7 +31,7 @@ for key, val of staffData
     # create an int-only var from the start date to use in id values later:
     startDateInt = val.startDate.replace /\//g, ''
     # Call setUONDate to clamp start of organisational start date:
-    orgStartDate = setUONDate(employeeStartDate)
+    orgStartDate = setUONDate employeeStartDate
     # Split 'known as' into name components:
     [akaFirst, akaLast] = val.knownAs.split /\s(.+)/
     person =

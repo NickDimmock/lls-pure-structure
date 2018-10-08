@@ -31,3 +31,8 @@ Import in following order to maintain structure:
 - Staff
 
 ```create-staff``` will also generate an ```email-lookup``` file in the output folder, which can be used to look up person IDs by email address.
+
+## Outstanding issues
+
+- An accurate staff start date for their department is required (as opposed to their general employment start date).
+- Need to specify any entries to be ignored.
