@@ -2,9 +2,12 @@
 # Areas in HR code = faculties in Pure
 # UON is included so we can manually set the ID
 
+fs = require 'fs'
 config = require 'local-config'
 convert = require 'xml-js'
 areaData = require("#{config.dataJSON}").areas
+jsonOutFile = "#{config.outputDir}/faculties.json"
+xmlOutFile = "#{config.outputDir}/faculties.xml"
 
 universityID = 'UON'
 
@@ -43,6 +46,15 @@ for key, val of areaData
         parentOrganisationId: universityID
     faculties.organisations.organisation.push(faculty)
 
+
+jsonOut = JSON.stringify(faculties, null, 4)
 xmlOut = convert.json2xml faculties, { compact: true, spaces: 4 }
 
-console.log xmlOut
+if fs.existsSync jsonOutFile
+    fs.copyFileSync jsonOutFile, "#{jsonOutFile}.bak"
+
+if fs.existsSync xmlOutFile
+    fs.copyFileSync xmlOutFile, "#{xmlOutFile}.bak"
+
+fs.writeFileSync jsonOutFile, jsonOut
+fs.writeFileSync xmlOutFile, xmlOut

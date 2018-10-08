@@ -92,6 +92,15 @@ xmlOut = convert.json2xml personData, { compact: true, spaces: 4 }
 
 lookupOut = JSON.stringify(lookupData, null, 4)
 
+if fs.existsSync jsonOutFile
+    fs.copyFileSync jsonOutFile, "#{jsonOutFile}.bak"
+
+if fs.existsSync xmlOutFile
+    fs.copyFileSync xmlOutFile, "#{xmlOutFile}.bak"
+
+if fs.existsSync lookupOutFile
+    fs.copyFileSync lookupOutFile, "#{lookupOutFile}.bak"
+
 fs.writeFileSync jsonOutFile, jsonOut
 fs.writeFileSync xmlOutFile, xmlOut
 fs.writeFileSync lookupOutFile, lookupOut

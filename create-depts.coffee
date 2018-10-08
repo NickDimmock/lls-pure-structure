@@ -1,8 +1,11 @@
 # Create departmental structure
 
+fs = require 'fs'
 config = require 'local-config'
 convert = require 'xml-js'
 deptsData = require("#{config.dataJSON}").depts
+jsonOutFile = "#{config.outputDir}/depts.json"
+xmlOutFile = "#{config.outputDir}/depts.xml"
 
 # Initial start date for all depts will be the creation of the uni
 startDate = config.uonStartDate
@@ -28,6 +31,14 @@ for key, val of deptsData
         parentOrganisationId: val.areaCode
     depts.organisations.organisation.push dept
 
+jsonOut = JSON.stringify(depts, null, 4)
 xmlOut = convert.json2xml depts, { compact: true, spaces: 4 }
 
-console.log xmlOut
+if fs.existsSync jsonOutFile
+    fs.copyFileSync jsonOutFile, "#{jsonOutFile}.bak"
+
+if fs.existsSync xmlOutFile
+    fs.copyFileSync xmlOutFile, "#{xmlOutFile}.bak"
+
+fs.writeFileSync jsonOutFile, jsonOut
+fs.writeFileSync xmlOutFile, xmlOut
