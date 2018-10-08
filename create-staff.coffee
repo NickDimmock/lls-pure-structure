@@ -19,8 +19,6 @@ personData =
                 xmlns: 'v1.unified-person-sync.pure.atira.dk'
             person: []
 
-foo = 'placeholder'
-
 for key, val of staffData
     # convert start date from uni to Pure format
     # (dd/mm/yyyy to yyyy-mm-dd)
