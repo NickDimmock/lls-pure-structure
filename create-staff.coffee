@@ -35,7 +35,6 @@ for key, val of staffData
     person =
         _attributes:
             id: key
-            # managedInPure: 'false'
         name:
             'v3:firstname': val.firstName
             'v3:lastname': val.surname

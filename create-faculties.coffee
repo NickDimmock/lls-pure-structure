@@ -20,8 +20,6 @@ faculties =
             'xmlns:v3': 'v3.commons.pure.atira.dk'
         organisation: [
             {
-                # _attributes:
-                    # managedInPure: 'false'
                 organisationId: universityID
                 type: 'university'
                 name:
@@ -34,8 +32,6 @@ faculties =
 
 for key, val of areaData
     faculty =
-        #_attributes:
-            #managedInPure: 'true'
         organisationId: key
         type: 'faculty'
         name:

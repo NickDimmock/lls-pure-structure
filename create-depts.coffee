@@ -19,8 +19,6 @@ depts =
 
 for key, val of deptsData
     dept =
-        # _attributes:
-            # managedInPure: 'false'
         organisationId: key
         type: 'department'
         name:
