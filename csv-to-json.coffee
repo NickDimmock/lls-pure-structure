@@ -1,12 +1,8 @@
-# Ignoring sub-areas to avoid ID / name clashes and redundancy
-
 config = require 'local-config'
 parse = require 'csv-parse'
 fs = require 'fs'
 
-dataFile = "#{config.dataCSV}"
-
-csvData = fs.readFileSync(dataFile)
+csvData = fs.readFileSync(config.dataCSV)
 
 data =
     staff: {}
@@ -18,12 +14,16 @@ parse csvData, { columns: true }, (err, csv) ->
     if err
         throw err
     for row in csv
-        # Process will tell us whether to add this record
+        # processStaff flag will tell us whether to add this record
         processStaff = true
         if data.staff[row['ResID']]
             data.alerts.push "Duplicate staff entry: #{row['ResID']} (#{row['Known As']})"
             # If a duplicate record exists, don't process this version if the
-            # main position is set to zero:
+            # main position is set to zero.
+            # We can't just ignore all zero value records, because in some cases they
+            # may be the only ones. This way we'll overwrite any existing zero value
+            # records if we get a positive value, but we won't overwrite positive
+            # value records with zero values.
             if row['Main position'] == '0'
                 processStaff = false
         if processStaff

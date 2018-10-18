@@ -21,11 +21,11 @@ Main position can't be relied upon solely as at least one person only exists wit
 
 ## Scripts
 
-Run ```csv-to-json``` to convert CSV to main JSON file.
+Run ```csv-to-json``` to convert CSV to main JSON file (writes direct to console).
 Run ```create-faculties``` to create top-level uni & faculty structure.
 Run ```create-depts``` to create strucutre within faculties.
 Run ```create-staff``` to create staff.
-Import in following order to maintain structure:
+Import in the following order to correctly create structure in Pure:
 - Faculties
 - Depts
 - Staff
