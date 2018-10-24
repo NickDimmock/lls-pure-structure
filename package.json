@@ -14,6 +14,6 @@
     "local-config": "file:lib/local-config",
     "moment": "^2.22.2",
     "set-uon-date": "file:lib/set-uon-date",
-    "xml-js": "^1.6.7"
+    "xml-js": "^1.6.8"
   }
 }

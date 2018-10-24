@@ -1,4 +1,4 @@
-dataFile =  './data/data_170918'
+dataFile =  './data/staffdata'
 
 module.exports =
         dataCSV: "#{dataFile}.csv"
